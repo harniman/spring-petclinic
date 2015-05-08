@@ -3,15 +3,16 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.springframework.samples</groupId>
 	<artifactId>spring-petclinic</artifactId>
-	<version>1.0.0-ndh</version>
+	<version>1.0.0-clc</version>
 
 	<name>petclinic</name>
 	<packaging>war</packaging>
 	<scm>
-		<connection>scm:git:https://github.com/harniman/spring-petclinic.git</connection>
-		<developerConnection>scm:git:https://github.com/harniman/spring-petclinic.git</developerConnection>
+		<connection>scm:git:https://github.com/cyrille-leclerc/spring-petclinic.git</connection>
+		<developerConnection>scm:git:https://github.com/cyrille-leclerc/spring-petclinic.git</developerConnection>
 	</scm>
 
+    <!-- adding a comment -->
 	<properties>
 
 		<!-- Generic properties -->
@@ -392,10 +393,6 @@
 					<includes>
 						<include>**/*Tests.java</include>
 					</includes>
-                    <systemProperties>
-				        <java.awt.headless>true</java.awt.headless>
-				    </systemProperties>
-					
 				</configuration>
 			</plugin>
 			<plugin>
@@ -474,5 +471,4 @@
 		</plugins>
 	</build>
 	<url>demopetclinic</url>
-	<description>Forked version by Nigel Harniman for Cloudbees Workflow Demo</description>
 </project>
