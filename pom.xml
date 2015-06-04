@@ -73,10 +73,10 @@
 
 	</properties>
 <distributionManagement>
-  <site>
-    <id>nexus</id>
-    <url>dav:   http://localhost:8091/nexus/content/sites/site/</url>
-  </site>
+  <snapshotRepository>
+    <id>test</id>
+    <url>http://localhost:8091/nexus/content/repositories/test</url>
+  </snapshotRepository>
 </distributionManagement>
 
 	<dependencies>
