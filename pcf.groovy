@@ -9,14 +9,14 @@ node('linux') {
     sh 'date'
     // COMPILE AND JUNIT
     echo "INFO - Starting build phase"
-    //def src = 'https://github.com/harniman/spring-petclinic.git'
-    def src = '/Users/nharniman/git/spring-petclinic'
+    def src = 'https://github.com/harniman/spring-petclinic.git'
+    //def src = '/Users/nharniman/git/spring-petclinic'
     git url: src
 
     ensureMaven()
 
 
-    sh 'mvn -o clean package site'
+    sh 'mvn clean package site'
     sh 'tar -c -f src.tar src/ pom.xml'
     dir('target') {
         stash includes: '*.war', name: 'PCF-Petclinic-war'
@@ -27,7 +27,6 @@ node('linux') {
     step([$class: 'ArtifactArchiver', allowEmptyArchive: false, artifacts: 'target/site/**', excludes: null])
     step $class: 'hudson.tasks.junit.JUnitResultArchiver', testResults: 'target/surefire-reports/*.xml'
     echo "INFO - Ending build phase"
-    sh 'date'
   }
 }
 checkpoint 'Build complete'
@@ -64,6 +63,8 @@ parallel qualityAnalysis: {
 }, 
 failFast: true
 
+checkpoint 'QA complete'
+
 
 banner "PCF Perf Deploy"
 
@@ -74,6 +75,8 @@ node ("linux") {
     deploy('perf-nigel-petclinic', 'performance', 'PCF-Petclinic-war')
  }
 }
+
+checkpoint 'Perf Deploy Complete'
 
 banner "Perf Tests"
 
@@ -89,6 +92,7 @@ node ("linux") {
 
   }
 }
+checkpoint 'Perf Tests Complete'
 
 banner "PCF Production Deploy"
 
