@@ -12,15 +12,6 @@
 		<developerConnection>scm:git:https://github.com/cyrille-leclerc/spring-petclinic.git</developerConnection>
 	</scm>
 
-    <!-- adding a comment -->
-<profiles>
-    <profile>
-      <id>jmeter-only</id>
-      <properties>
-        <skip.compile>true</skip.compile>
-      </properties>
-    </profile>
-</profiles>
 	<properties>
 
 		<!-- Generic properties -->
@@ -86,17 +77,6 @@
 		<jmeter.loglevel>INFO</jmeter.loglevel>
 
 	</properties>
-<distributionManagement>
-  <snapshotRepository>
-    <id>test</id>
-    <url>http://localhost:8091/nexus/content/repositories</url>
-  </snapshotRepository>
-  
-  <site>
-    <id>nexus</id>
-    <url>dav:http://localhost:8091/nexus/content/sites/site/</url>
-  </site>
-</distributionManagement>
 
 	<dependencies>
 		<dependency>
